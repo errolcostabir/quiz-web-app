@@ -36,15 +36,6 @@ class QuestionBox extends Component {
     }
 
 
-    playAgain = () => {
-        this.setState({
-            score: 0,
-            response: 0,
-            submitted: false,
-        });
-    }
-
-
     submit = () => {
         this.setState({
             submitted: true,
@@ -58,12 +49,12 @@ class QuestionBox extends Component {
         })
         Axios.get('http://localhost:9000/quiz/' + this.props.match.params.id)
             .then(res => {
-               
+
                 this.setState({
                     name: res.data.name,
                     questionList: res.data.questionList,
                 });
-              
+
             })
             .catch((err) => {
                 console.log(err);
@@ -73,13 +64,13 @@ class QuestionBox extends Component {
     render() {
         return (
             <div className="py-4">
-                <div className="py-4 mt-2 bg-secondary col-md-10 m-auto ">
+                <div className="">
                     {
-                        this.state.response <= 5 &&
+                        this.state.response <= this.state.questionList.length &&
                         this.state.questionList.map((question, index) => {
                             return (
-                                <div>
-                                    <h4 key={index} className="text-white">{question.question}</h4>
+                                <div className="py-4 mt-2 bg-dark col-md-10 m-auto " style={{"fontFamily": "ubuntu"}}>
+                                    <h4 key={index} className="text-white" style={{"fontFamily": "ubuntu"}}>{question.question}</h4>
                                     {
                                         question.answers.map((subitem, i) => {
                                             return (
@@ -89,16 +80,19 @@ class QuestionBox extends Component {
 
                                     }
                                 </div>
+
                             )
 
                         })
                     }
+
                     {
-                        this.state.startQuiz === true && this.state.submitted === true ? (<Result score={this.state.score} />) : null
+                        this.state.startQuiz === true && this.state.submitted === true ? (<Result score={this.state.score} size={this.state.questionList.length} />) : null
                     }
 
                     {
-                        this.state.submitted === false && this.state.showButton === true ? (<button className="btn btn-warning btn-lg btn-block text-white"  disabled={this.state.response < 5} onClick={this.submit}>SUBMIT</button>) : null
+                        this.state.submitted === false && this.state.showButton === true ? (
+                            <div className="text-center"><button className="text-center btn btn-primary mt-4 text-white " disabled={this.state.response < this.state.questionList.length} onClick={this.submit}>SUBMIT</button></div>) : null
                     }
 
                 </div>
