@@ -6,6 +6,7 @@
 .pnp.js
 mongourl.txt
 QuizAPI.js
+package-lock.json
 # testing
 /coverage
 
