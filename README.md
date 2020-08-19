@@ -3,7 +3,7 @@
 A simple Quiz Web App developed using React JS and Node JS. 
 
 ## Below is the working demo and Instructions to use, download and run the project on your local machine.
-
+![github 0](https://user-images.githubusercontent.com/55547435/90640552-bc6f6e80-e24d-11ea-8f6c-c8bb10b73604.gif)
 
 ## Instructions to Run Project on local machine
 * 1.Clone or Download the project
