@@ -55,6 +55,7 @@ class AdminPage extends Component {
     }
 
     addQuestion = (e) => {
+        e.preventDefault();
         this.setState((prevState) => ({
             questionList: [...prevState.questionList, { question: "", answers: [], correct: "" }]
         }));
@@ -62,19 +63,29 @@ class AdminPage extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
         const body = {
             name: this.state.name,
             questionList: this.state.questionList
         }
-
-        console.log(body);
+        //console.log(body);
 
         Axios.post('http://localhost:9000/quiz/', body)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err));
-        
-        console.log('Quiz Created');
+
+        this.setState({
+            name: '',
+            questionList: [
+                {
+                    question: '',
+                    answers: [],
+                    correct: ''
+                }
+            ]
+        });
+
+        window.location='/';
+        //console.log('Quiz Created');
     }
 
     render() {
@@ -92,7 +103,7 @@ class AdminPage extends Component {
                 <hr style={{ "backgroundColor": "gray", "height": "1px" }} />
                 <div>
 
-                    <form onSubmit={this.handleSubmit}>
+                    <form>
                         <div class="form-group">
                             <label for="formGroupExampleInput" style={{ "fontWeight": "bold" }} className="text-dark">Quiz Name: </label>
                             <input type="text" class="form-control col-sm-2 text-center" id="formGroupExampleInput" value={this.state.name} placeholder="Quiz Name" name="name" onChange={this.handleNameChange} />
@@ -140,8 +151,7 @@ class AdminPage extends Component {
                         }
                         <div className="text-center">
                             <button onClick={this.addQuestion} className="mr-3 btn btn-info"><span><i class="fa fa-plus mr-1"></i></span>ADD QUESTION</button>
-
-                            <input type="submit" value="SUBMIT" className="btn btn-warning text-light" />
+                            <button onClick={this.handleSubmit} className="btn btn-warning text-light">SUBMIT</button>
                         </div>
                     </form>
                 </div>
@@ -151,6 +161,4 @@ class AdminPage extends Component {
     }
 
 }
-
-
 export default AdminPage;
