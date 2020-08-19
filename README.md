@@ -1,4 +1,4 @@
-##Instructions to Run Project on local machine
+## Instructions to Run Project on local machine
 
 ## Available Scripts
 
