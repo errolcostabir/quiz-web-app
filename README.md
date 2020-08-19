@@ -2,7 +2,7 @@
 
 A simple Quiz Web App developed using React JS and Node JS. 
 
-## Below is the working demo and Instructions to use download and run the project on your local machine.
+## Below is the working demo and Instructions to use, download and run the project on your local machine.
 
 
 ## Instructions to Run Project on local machine
@@ -31,8 +31,8 @@ npm start
 * 8.The project should start running in your default browser. Go ahead and use it.
 
 ## Tech Stack Used
-* 1.React JS
-* 2.Node JS
-* 3.MongoDB
-* 4.Express JS
-* 5.Bootstrap
+* React JS
+* Node JS
+* MongoDB
+* Express JS
+* Bootstrap
